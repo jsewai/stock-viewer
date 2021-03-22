@@ -3,4 +3,20 @@
 
 <h1>hello</h1>
 
+<br>
+<br>
+{% if api %}
+  {% if api == "Error..." %}
+    There are problems to get the stock,<br/>
+    Please try again...
+  {% else %}
+    {% for key, value in api.items %}
+      {{key}}:{{value}}<br/>
+    {% endfor %}
+      
+  {% endif%}
+  
+
+{% endif %}
+
 {% endblock %}
