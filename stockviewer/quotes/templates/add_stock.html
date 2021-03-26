@@ -10,11 +10,37 @@
   name="ticker">
   <button class="btn btn-outline-success text-nowrap" type="submit">Add Stock</button>
 </form>
+<br/>
 
-{% for item in ticker %}
-  {{ item }} - <a href="{% url 'delete' item.id %}">Delete Stock</a><br/>
-{% endfor %}
-
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Company:</th>
+      <th scope="col">Price:</th>
+      <th scope="col">Last day Price:</th>
+      <th scope="col">Market Cap:</th>
+      <th scope="col">High in 52 weeks::</th>
+      <th scope="col">Low in 52 weeks:</th>
+      <th scope="col">Delete Stock</th>
+    </tr>
+  </thead>
+  
+  {% if ticker  %}
+    <tbody>
+      {% for item_output in output %}
+        <tr>
+          <td>{{ item_output.companyName }}</td>
+          <td>{{ item_output.latestPrice }}</td>
+          <td>{{ item_output.previousClose }}</td>
+          <td>{{ item_output.marketCap }}</td>
+          <td>{{ item_output.week52High }}</td>
+          <td>{{ item_output.week52Low }}</td>
+          <td><a href="/">Delete Stock</a></td>
+        </tr>
+      {% endfor %}    
+    </tbody>
+  {% endif %}
+</table>
 {% endblock %}
 
 
