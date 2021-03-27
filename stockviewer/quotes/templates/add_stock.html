@@ -26,15 +26,16 @@
   </thead>
   
   {% if ticker  %}
+  {% load humanize %}
     <tbody>
       {% for item_output in output %}
         <tr>
           <td>{{ item_output.companyName }}</td>
-          <td>{{ item_output.latestPrice }}</td>
-          <td>{{ item_output.previousClose }}</td>
-          <td>{{ item_output.marketCap }}</td>
-          <td>{{ item_output.week52High }}</td>
-          <td>{{ item_output.week52Low }}</td>
+          <td>${{ item_output.latestPrice|intcomma }}</td>
+          <td>${{ item_output.previousClose|intcomma }}</td>
+          <td>${{ item_output.marketCap|intword }}</td>
+          <td>${{ item_output.week52High|intcomma }}</td>
+          <td>${{ item_output.week52Low|intcomma }}</td>
           <td><a href="/">Delete Stock</a></td>
         </tr>
       {% endfor %}    
